@@ -26,12 +26,10 @@ export const siteConfig = {
       title: "사업분야",
       href: "/business",
       items: [
-        { title: "지열냉난방", href: "/business/geothermal" },
-        { title: "태양광발전", href: "/business/solar" },
-        { title: "바이오 에너지", href: "/business/bio" },
-        { title: "열병합 발전", href: "/business/cogeneration" },
-        { title: "에너지재활용시스템(ERS)", href: "/business/ers" },
-        { title: "연료전지", href: "/business/fuel-cell" },
+        { title: "가정용 연료 소매", href: "/business/retail" },
+        { title: "상업용 연료 공급", href: "/business/commercial" },
+        { title: "안전 점검 서비스", href: "/business/safety" },
+        { title: "긴급 배송 시스템", href: "/business/emergency" },
       ],
     },
     {

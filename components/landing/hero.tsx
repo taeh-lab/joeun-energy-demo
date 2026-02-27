@@ -1,6 +1,7 @@
 import { ArrowDown } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { ScrollReveal } from "@/components/ui/scroll-reveal"
+import { controlRoom } from "@/config/control-room"
 
 export function Hero() {
   return (
