@@ -56,34 +56,36 @@ function AnimatedCounter({ target, suffix }: { target: number; suffix: string })
 
 export function Stats() {
   return (
-    <section id="stats" className="relative overflow-hidden bg-foreground py-20">
-      {/* Subtle pattern overlay */}
-      <div className="absolute inset-0 opacity-5">
-        <div
-          className="h-full w-full"
-          style={{
-            backgroundImage:
-              "radial-gradient(circle at 1px 1px, rgba(255,255,255,0.3) 1px, transparent 0)",
-            backgroundSize: "40px 40px",
-          }}
-        />
-      </div>
+    <section id="stats" className="relative overflow-hidden bg-[#0A0C10] py-32">
+      {/* Background Glows */}
+      <div className="absolute top-1/2 left-1/4 h-[500px] w-[500px] -translate-y-1/2 rounded-full bg-primary/20 blur-[120px]" />
+      <div className="absolute top-1/2 right-1/4 h-[500px] w-[500px] -translate-y-1/2 rounded-full bg-accent/10 blur-[120px]" />
 
       <ScrollReveal className="relative z-10 mx-auto max-w-7xl px-6">
-        <div className="mb-12 text-center">
-          <p className="mb-2 text-sm font-semibold uppercase tracking-widest text-primary">
-            Our Achievements
-          </p>
-          <h2 className="text-3xl font-bold text-primary-foreground md:text-4xl text-balance">
-            숫자로 보는 {controlRoom.identity.name}
+        <div className="mb-20 text-center">
+          <div className="flex items-center justify-center gap-4 mb-4">
+            <div className="h-px w-8 bg-primary/50" />
+            <p className="text-sm font-black uppercase tracking-[0.4em] text-primary">
+              Impact
+            </p>
+            <div className="h-px w-8 bg-primary/50" />
+          </div>
+          <h2 className="text-4xl font-black text-white md:text-5xl lg:text-6xl tracking-tighter text-balance">
+            숫자로 증명하는{/*  */}
+            <br />
+            기업의 가치
           </h2>
         </div>
 
-        <div className="grid grid-cols-2 gap-8 lg:grid-cols-4">
+        <div className="grid grid-cols-2 gap-12 lg:grid-cols-4">
           {stats.map((stat) => (
-            <div key={stat.label} className="text-center">
-              <AnimatedCounter target={stat.value} suffix={stat.suffix} />
-              <p className="mt-2 text-sm font-medium text-primary-foreground/70">{stat.label}</p>
+            <div key={stat.label} className="text-center group">
+              <div className="mb-4 inline-block transition-transform duration-500 group-hover:scale-110">
+                <AnimatedCounter target={stat.value} suffix={stat.suffix} />
+              </div>
+              <p className="text-sm font-bold uppercase tracking-widest text-white/40 group-hover:text-primary transition-colors">
+                {stat.label}
+              </p>
             </div>
           ))}
         </div>

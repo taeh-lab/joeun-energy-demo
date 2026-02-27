@@ -1,44 +1,49 @@
+import { Zap } from "lucide-react"
 import { siteConfig } from "@/config/site"
 import { controlRoom } from "@/config/control-room"
 import Link from "next/link"
 
 export function Footer() {
   return (
-    <footer className="bg-foreground py-12">
+    <footer className="relative bg-[#050505] pt-24 pb-12 overflow-hidden border-t border-white/5">
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[1px] bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
+      
       <div className="mx-auto max-w-7xl px-6">
-        <div className="grid gap-8 md:grid-cols-3">
+        <div className="grid gap-16 md:grid-cols-4 lg:grid-cols-5">
           {/* Company Info */}
-          <div>
-            <div className="mb-4 flex items-center gap-2">
-              <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" className="text-primary-foreground">
-                  <circle cx="12" cy="12" r="5" stroke="currentColor" strokeWidth="2" />
-                  <line x1="12" y1="1" x2="12" y2="4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-                  <line x1="12" y1="20" x2="12" y2="23" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-                  <line x1="1" y1="12" x2="4" y2="12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-                  <line x1="20" y1="12" x2="23" y2="12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-                </svg>
+          <div className="md:col-span-2 lg:col-span-2">
+            <Link href="/" className="mb-8 flex items-center gap-3">
+              <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-primary text-primary-foreground shadow-2xl shadow-primary/20">
+                <Zap className="h-6 w-6 stroke-[3]" />
               </div>
-              <span className="text-lg font-bold text-background">{controlRoom.identity.name}</span>
-            </div>
-            <p className="text-sm leading-relaxed text-background/60">
+              <span className="text-2xl font-black text-white tracking-tighter">
+                {controlRoom.identity.logoText}
+              </span>
+            </Link>
+            <p className="max-w-xs text-lg font-medium leading-relaxed text-white/40 mb-8 text-pretty">
               {controlRoom.identity.description}
               <br />
-              신뢰할 수 있는 신재생에너지 파트너.
+              양평 지역의 미래를 여는 에너지 파트너.
             </p>
+            <div className="flex gap-4">
+              {/* Social placeholders could go here */}
+              <div className="h-10 w-10 rounded-full bg-white/5 flex items-center justify-center border border-white/10 transition-colors hover:bg-primary/20 hover:text-primary cursor-pointer text-white/50 hover:text-white">
+                <Zap className="h-5 w-5" />
+              </div>
+            </div>
           </div>
 
-          {/* Quick Links */}
+          {/* Nav Links */}
           <div>
-            <h4 className="mb-4 text-sm font-semibold uppercase tracking-wider text-background/80">
-              바로가기
+            <h4 className="mb-6 text-sm font-black uppercase tracking-[0.2em] text-white/80">
+              Sitemap
             </h4>
-            <nav className="flex flex-col gap-2" aria-label="Footer navigation">
-              {siteConfig.mainNav.slice(0, 4).map((link) => (
+            <nav className="flex flex-col gap-4">
+              {siteConfig.mainNav.map((link) => (
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="text-sm text-background/60 transition-colors hover:text-primary"
+                  className="text-white/40 font-bold transition-all hover:text-primary hover:translate-x-1"
                 >
                   {link.title}
                 </Link>
@@ -46,39 +51,41 @@ export function Footer() {
             </nav>
           </div>
 
-          {/* Contact */}
-          <div>
-            <h4 className="mb-4 text-sm font-semibold uppercase tracking-wider text-background/80">
-              연락처
+          {/* Contact 1 */}
+          <div className="lg:col-span-2">
+            <h4 className="mb-6 text-sm font-black uppercase tracking-[0.2em] text-white/80">
+              Contact
             </h4>
-            <div className="space-y-2 text-sm text-background/60">
-              <p>
-                <span className="text-background/80">전화:</span>{" "}
-                <a href={`tel:${siteConfig.contact.tel.replace(/-/g, '')}`} className="transition-colors hover:text-primary">
-                  {siteConfig.contact.tel}
-                </a>
-              </p>
-              <p>
-                <span className="text-background/80">이메일:</span>{" "}
-                <a href={`mailto:${siteConfig.contact.email}`} className="transition-colors hover:text-primary">
-                  {siteConfig.contact.email}
-                </a>
-              </p>
-              <p>
-                <span className="text-background/80">주소:</span> {siteConfig.contact.address}
-              </p>
-              <p>
-                <span className="text-background/80">운영시간:</span> {siteConfig.contact.hours}
-              </p>
+            <div className="space-y-6">
+              <div>
+                <p className="text-xs font-black text-white/20 uppercase mb-2 tracking-widest">Address</p>
+                <p className="text-white/60 font-bold">{siteConfig.contact.address}</p>
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <div>
+                  <p className="text-xs font-black text-white/20 uppercase mb-2 tracking-widest">Phone</p>
+                  <a href={`tel:${siteConfig.contact.tel.replace(/-/g, '')}`} className="text-lg font-black text-white transition-colors hover:text-primary">
+                    {siteConfig.contact.tel}
+                  </a>
+                </div>
+                <div>
+                  <p className="text-xs font-black text-white/20 uppercase mb-2 tracking-widest">Operating Hours</p>
+                  <p className="text-white/60 font-bold">{siteConfig.contact.hours}</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
 
         {/* Bottom Bar */}
-        <div className="mt-10 border-t border-background/10 pt-6 text-center">
-          <p className="text-xs text-background/40">
-            {'© 2025 조은에너지. All rights reserved. 이 사이트는 데모 페이지입니다.'}
+        <div className="mt-24 pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
+          <p className="text-xs font-bold text-white/20 tracking-widest">
+            © 2026 {controlRoom.identity.name}. ALL RIGHTS RESERVED.
           </p>
+          <div className="flex gap-8">
+            <Link href="/privacy" className="text-xs font-bold text-white/10 hover:text-white/30 transition-colors">Privacy Policy</Link>
+            <Link href="/terms" className="text-xs font-bold text-white/10 hover:text-white/30 transition-colors">Terms of Service</Link>
+          </div>
         </div>
       </div>
     </footer>

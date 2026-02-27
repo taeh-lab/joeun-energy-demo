@@ -1,65 +1,64 @@
-import { ArrowDown } from "lucide-react"
+import { Zap } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { ScrollReveal } from "@/components/ui/scroll-reveal"
 import { controlRoom } from "@/config/control-room"
+import { pageContent } from "@/config/content"
 
 export function Hero() {
   return (
-    <section className="relative flex min-h-[100dvh] items-center justify-center overflow-hidden">
-      {/* Background Image */}
-      <div className="absolute inset-0">
-        <img
-          src="/images/hero-solar.jpg"
-          alt="태양광 발전소 전경"
-          className="h-full w-full object-cover"
-        />
-        <div className="absolute inset-0 bg-foreground/60" />
+    <section className="mesh-bg relative flex min-h-[100dvh] items-center justify-center overflow-hidden pt-20">
+      {/* Dynamic Background Elements */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-1/4 -left-20 h-96 w-96 rounded-full bg-primary/10 blur-[100px] animate-pulse" />
+        <div className="absolute bottom-1/4 -right-20 h-96 w-96 rounded-full bg-accent/10 blur-[100px] animate-pulse" />
       </div>
 
       {/* Content */}
-      <ScrollReveal className="relative z-10 mx-auto max-w-4xl px-6 text-center">
-        <p className="mb-4 text-sm font-medium uppercase tracking-widest text-primary-foreground/80">
-          Renewable Energy Solutions
-        </p>
-        <h1 className="mb-6 text-4xl font-bold leading-tight text-primary-foreground md:text-5xl lg:text-6xl text-balance">
-          깨끗한 에너지로
+      <ScrollReveal className="relative z-10 mx-auto max-w-5xl px-6 text-center">
+        <div className="mb-6 inline-flex items-center gap-2 rounded-full bg-white/50 px-4 py-1.5 text-xs font-bold uppercase tracking-widest text-primary backdrop-blur-sm border border-white/20">
+          <Zap className="h-3 w-3 fill-current" />
+          Reliable Energy Partner
+        </div>
+        <h1 className="mb-6 text-5xl font-black leading-[1.1] text-foreground md:text-7xl lg:text-8xl text-balance tracking-tighter">
+          에너지의 미래,
           <br />
-          밝은 미래를 만듭니다
+          <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+            새로운 가치를 더하다
+          </span>
         </h1>
-        <p className="mx-auto mb-10 max-w-2xl text-lg leading-relaxed text-primary-foreground/85 text-pretty">
-          태양광 시공부터 ESS 솔루션, 에너지 컨설팅까지.
+        <p className="mx-auto mb-10 max-w-2xl text-lg font-medium leading-relaxed text-muted-foreground md:text-xl text-pretty">
+          {pageContent.home.hero.description}
           <br className="hidden md:block" />
-          {controlRoom.identity.name}가 함께하는 지속 가능한 에너지 전환.
+          {controlRoom.identity.name}가 제안하는 프리미엄 에너지 솔루션.
         </p>
         <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
           <a href="#contact">
             <Button
               size="lg"
-              className="bg-primary text-primary-foreground px-8 py-6 text-base font-semibold hover:bg-primary/90"
+              className="rounded-full bg-primary px-10 py-8 text-lg font-bold shadow-2xl transition-all hover:scale-105"
             >
-              무료 상담 신청
+              전문가 상담 신청
             </Button>
           </a>
           <a href="#services">
             <Button
               size="lg"
               variant="outline"
-              className="border-primary-foreground/40 bg-transparent px-8 py-6 text-base font-semibold text-primary-foreground hover:bg-primary-foreground/10 hover:text-primary-foreground"
+              className="rounded-full border-primary/20 bg-white/50 px-10 py-8 text-lg font-bold backdrop-blur-sm transition-all hover:bg-white/80"
             >
-              서비스 알아보기
+              서비스 살펴보기
             </Button>
           </a>
         </div>
       </ScrollReveal>
 
-      {/* Scroll Indicator */}
-      <a
-        href="#about"
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce text-primary-foreground/60 transition-colors hover:text-primary-foreground"
-        aria-label="아래로 스크롤"
-      >
-        <ArrowDown className="h-6 w-6" />
-      </a>
+      {/* Modern Scroll Indicator */}
+      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2">
+        <span className="text-[10px] font-black uppercase tracking-[0.3em] text-muted-foreground/50">Scroll</span>
+        <div className="h-12 w-6 rounded-full border-2 border-primary/10 flex justify-center p-1">
+          <div className="h-2 w-2 rounded-full bg-primary animate-bounce" />
+        </div>
+      </div>
     </section>
   )
 }

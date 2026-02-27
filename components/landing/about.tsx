@@ -1,4 +1,5 @@
 import { Building2, Award, Users, Leaf } from "lucide-react"
+import { Button } from "@/components/ui/button"
 import { ScrollReveal } from "@/components/ui/scroll-reveal"
 import { controlRoom } from "@/config/control-room"
 
@@ -31,65 +32,91 @@ const highlights = [
 
 export function About() {
   return (
-    <section id="about" className="bg-background py-24">
-      <ScrollReveal className="mx-auto max-w-7xl px-6">
+    <section id="about" className="relative py-32 overflow-hidden">
+      <div className="absolute inset-0 bg-secondary/30 pointer-events-none" />
+      
+      <ScrollReveal className="relative z-10 mx-auto max-w-7xl px-6">
         {/* Section Header */}
-        <div className="mb-16 text-center">
-          <p className="mb-2 text-sm font-semibold uppercase tracking-widest text-primary">
-            About Us
-          </p>
-          <h2 className="mb-4 text-3xl font-bold text-foreground md:text-4xl text-balance">
-            신뢰할 수 있는 에너지 파트너
+        <div className="mb-20">
+          <div className="flex items-center gap-4 mb-4">
+            <div className="h-px w-12 bg-primary" />
+            <p className="text-sm font-black uppercase tracking-[0.3em] text-primary">
+              The Identity
+            </p>
+          </div>
+          <h2 className="text-4xl font-black text-foreground md:text-6xl tracking-tighter leading-none">
+            신뢰와 혁신으로{/*  */}
+            <br />
+            <span className="text-muted-foreground/30">사업의 가치를 높입니다</span>
           </h2>
-          <div className="mx-auto h-1 w-16 rounded-full bg-primary" />
         </div>
 
         {/* Content Grid */}
-        <div className="grid items-center gap-12 lg:grid-cols-2">
-          {/* Image */}
-          <div className="overflow-hidden rounded-xl">
-            <img
-              src="/images/about-company.jpg"
-              alt={`${controlRoom.identity.name} 본사 전경`}
-              className="h-80 w-full object-cover lg:h-[420px]"
-            />
-          </div>
-
-          {/* Text */}
-          <div>
-            <h3 className="mb-4 text-2xl font-bold text-foreground">
-              지속 가능한 미래를 위한
-              <br />
-              최적의 에너지 솔루션
-            </h3>
-            <p className="mb-6 leading-relaxed text-muted-foreground">
-              {controlRoom.identity.name}는 신재생에너지 분야의 전문 기업으로, 태양광 발전 시스템의 설계, 시공,
-              유지보수는 물론 ESS(에너지저장장치) 솔루션과 에너지 컨설팅까지 원스톱 서비스를
-              제공합니다. 풍부한 경험과 검증된 기술력을 바탕으로 고객에게 최적화된 에너지 솔루션을
-              제안합니다.
-            </p>
-            <p className="mb-8 leading-relaxed text-muted-foreground">
-              경기도 파주시에 본사를 두고 전국 각지의 프로젝트를 성공적으로 수행해왔으며, 주택,
-              상업시설, 산업단지 등 다양한 분야에서 고객 만족을 실현하고 있습니다.
-            </p>
-
-            {/* Mini Stats */}
-            <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">
-              {highlights.map((item) => (
-                <div
-                  key={item.title}
-                  className="rounded-lg border border-border bg-card p-4 text-center"
-                >
-                  <item.icon className="mx-auto mb-2 h-5 w-5 text-primary" />
-                  <p className="text-xl font-bold text-foreground">
+        <div className="grid items-start gap-16 lg:grid-cols-2">
+          {/* Image & Stats Bento */}
+          <div className="grid gap-6">
+            <div className="group relative overflow-hidden rounded-[2.5rem] shadow-2xl">
+              <img
+                src="/images/about-company.jpg"
+                alt={`${controlRoom.identity.name} 본사`}
+                className="h-[400px] w-full object-cover transition-transform duration-700 group-hover:scale-110"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+              <div className="absolute bottom-8 left-8">
+                <p className="text-sm font-bold text-white/70 uppercase tracking-widest">Since 2022</p>
+                <h4 className="text-2xl font-black text-white">{controlRoom.identity.name}</h4>
+              </div>
+            </div>
+            
+            <div className="grid grid-cols-2 gap-6">
+              {highlights.slice(0, 2).map((item) => (
+                <div key={item.title} className="glass bento-card border-primary/10">
+                  <item.icon className="mb-4 h-8 w-8 text-primary" />
+                  <p className="text-3xl font-black text-foreground">
                     {item.value}
-                    <span className="text-sm font-medium text-muted-foreground">
-                      {item.suffix}
-                    </span>
+                    <span className="text-lg opacity-30 ml-1">{item.suffix}</span>
                   </p>
-                  <p className="text-xs text-muted-foreground">{item.title}</p>
+                  <p className="text-sm font-bold text-muted-foreground">{item.title}</p>
                 </div>
               ))}
+            </div>
+          </div>
+
+          {/* Text Content */}
+          <div className="lg:pt-10">
+            <div className="space-y-8">
+              <div className="space-y-4">
+                <h3 className="text-2xl font-black text-foreground leading-tight">
+                  고객의 만족을 최우선으로,<br />
+                  양평 지역을 대표하는 에너지 파트너
+                </h3>
+                <p className="text-lg font-medium leading-relaxed text-muted-foreground/80 text-pretty">
+                  {controlRoom.identity.name}는 지역 소상공인과 주민 여러분의 실질적인 에너지 비용 절감과 안전한 공급을 목표로 합니다.
+                  현대적인 시스템과 신속한 서비스를 바탕으로 에너지 유통의 새로운 기준을 제시합니다.
+                </p>
+              </div>
+
+              <div className="grid gap-6">
+                {highlights.slice(2).map((item) => (
+                  <div key={item.title} className="flex items-center gap-6 p-6 rounded-3xl bg-white/50 border border-white transition-all hover:bg-white shadow-sm">
+                    <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-primary/10 text-primary">
+                      <item.icon className="h-6 w-6" />
+                    </div>
+                    <div>
+                      <p className="text-xs font-black text-muted-foreground uppercase tracking-widest mb-1">{item.title}</p>
+                      <p className="text-xl font-bold text-foreground">
+                        {item.value}{item.suffix} <span className="text-sm font-medium text-muted-foreground/50">달성</span>
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              <div className="pt-6">
+                <Button size="lg" className="rounded-full px-8 py-7 font-bold text-lg shadow-xl shadow-primary/20">
+                  자세한 회사소개 보기
+                </Button>
+              </div>
             </div>
           </div>
         </div>

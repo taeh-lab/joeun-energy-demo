@@ -1,4 +1,5 @@
-import { ArrowRight } from "lucide-react"
+import { ArrowRight, Zap } from "lucide-react"
+import { Button } from "@/components/ui/button"
 import { ScrollReveal } from "@/components/ui/scroll-reveal"
 
 const services = [
@@ -30,68 +31,74 @@ const services = [
 
 export function Services() {
   return (
-    <section id="services" className="bg-card py-24">
+    <section id="services" className="py-32 bg-foreground text-primary-foreground overflow-hidden">
       <div className="mx-auto max-w-7xl px-6">
         {/* Section Header */}
-        <div className="mb-16 text-center">
-          <p className="mb-2 text-sm font-semibold uppercase tracking-widest text-primary">
-            Our Services
-          </p>
-          <h2 className="mb-4 text-3xl font-bold text-foreground md:text-4xl text-balance">
-            핵심 사업영역
+        <div className="mb-20">
+          <div className="flex items-center gap-4 mb-4">
+            <div className="h-px w-12 bg-primary" />
+            <p className="text-sm font-black uppercase tracking-[0.3em] text-primary">
+              Core Business
+            </p>
+          </div>
+          <h2 className="text-4xl font-black text-white md:text-6xl tracking-tighter leading-none mb-8">
+            성공을 위한{/*  */}
+            <br />
+            비즈니스 솔루션
           </h2>
-          <div className="mx-auto h-1 w-16 rounded-full bg-primary" />
+          <p className="max-w-2xl text-lg font-medium text-white/50 leading-relaxed text-pretty">
+            양수삼풍에너지는 단순한 연료 공급을 넘어, 고객의 비즈니스 안정성과 효율성을 위한 
+            최신 에너지 기술과 관리 시스템을 제공합니다.
+          </p>
         </div>
 
-        {/* Services Grid */}
-        <ScrollReveal animation="fade-up" className="grid gap-8 md:grid-cols-3">
-          {services.map((service, index) => (
-            <article
-              key={service.number}
-              className="group overflow-hidden rounded-xl border border-border bg-background transition-all duration-300 hover:-translate-y-2 hover:shadow-xl"
-            >
-              {/* Image */}
-              <div className="relative overflow-hidden">
-                <img
-                  src={service.image}
-                  alt={service.title}
-                  className="h-56 w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                />
-                <div className="absolute left-4 top-4 rounded-md bg-primary px-3 py-1 text-xs font-bold text-primary-foreground">
-                  {service.number}
+        {/* Bento Grid */}
+        <div className="grid gap-6 md:grid-cols-6 md:grid-rows-2">
+          {/* Main Service Card */}
+          <div className="md:col-span-3 md:row-span-2 group relative overflow-hidden rounded-[3rem] bg-zinc-900 border border-white/5 p-10 transition-all hover:border-primary/50">
+            <div className="relative z-10 h-full flex flex-col">
+              <div className="mb-auto">
+                <div className="mb-6 inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-primary text-white shadow-xl shadow-primary/20">
+                  <ArrowRight className="h-7 w-7" />
                 </div>
-              </div>
-
-              {/* Content */}
-              <div className="p-6">
-                <h3 className="mb-3 text-xl font-bold text-foreground">{service.title}</h3>
-                <p className="mb-4 text-sm leading-relaxed text-muted-foreground">
-                  {service.description}
+                <h3 className="text-3xl font-black mb-4">가정용 연료 소매 전문</h3>
+                <p className="text-white/60 text-lg leading-relaxed font-medium">
+                  철저한 안전 관리와 정직한 정량 공급을 원칙으로 합니다. 
+                  양평 지역 가정 어디든 신속하게 배송해 드리는 시스템을 갖추고 있습니다.
                 </p>
-
-                {/* Tags */}
-                <div className="mb-4 flex flex-wrap gap-2">
-                  {service.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="rounded-full bg-secondary px-3 py-1 text-xs font-medium text-secondary-foreground"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-
-                <a
-                  href="#contact"
-                  className="inline-flex items-center gap-1 text-sm font-semibold text-primary transition-colors hover:text-primary/80"
-                >
-                  자세히 보기
-                  <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-                </a>
               </div>
-            </article>
-          ))}
-        </ScrollReveal>
+              <div className="mt-12 flex flex-wrap gap-2">
+                {["정량공급", "안전배송", "지역밀착"].map((tag) => (
+                  <span key={tag} className="px-4 py-2 rounded-full bg-white/5 text-xs font-bold border border-white/10">{tag}</span>
+                ))}
+              </div>
+            </div>
+            <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-primary/10 to-transparent pointer-events-none" />
+          </div>
+
+          {/* Secondary Card 1 */}
+          <div className="md:col-span-3 group relative overflow-hidden rounded-[3rem] bg-primary p-10 transition-all hover:scale-[1.02] shadow-2xl shadow-primary/20">
+            <div className="relative z-10">
+              <h3 className="text-2xl font-black mb-2 text-white">상업용 대량 공급</h3>
+              <p className="text-primary-foreground/80 font-medium">대형 업장 및 시설을 위한 정기 공급망 운영</p>
+              <Button variant="secondary" className="mt-6 rounded-full font-bold px-6">문의하기</Button>
+            </div>
+            <Zap className="absolute bottom-[-20px] right-[-20px] h-40 w-40 text-white/10 -rotate-12" />
+          </div>
+
+          {/* Secondary Card 2 */}
+          <div className="md:col-span-3 group relative overflow-hidden rounded-[3rem] bg-zinc-900 border border-white/5 p-10 transition-all hover:border-accent/50">
+            <div className="relative z-10 flex items-center justify-between gap-8 h-full">
+              <div className="flex-1">
+                <h3 className="text-2xl font-black mb-2 text-white">안전 점검 & 관리</h3>
+                <p className="text-white/40 font-medium">최고의 전문가들이 제안하는 화재 및 가스 안전 점검 시스템</p>
+              </div>
+              <div className="h-20 w-20 rounded-[2rem] bg-accent/20 flex items-center justify-center border border-accent/20">
+                <ArrowRight className="h-8 w-8 text-accent" />
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   )
