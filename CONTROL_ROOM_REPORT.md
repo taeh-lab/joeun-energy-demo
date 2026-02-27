@@ -6,8 +6,9 @@
 
 ## 1. 관제실 설정 파일 안내
 
-### 📡 [control-room.ts](file:///c:/Users/tahoon/OneDrive/Desktop/joeun-energy-demo/config/control-room.ts) - **기술 연동 관제**
-가장 중요한 기술적 설정을 관리합니다.
+### 🆔 [control-room.ts](file:///c:/Users/tahoon/OneDrive/Desktop/joeun-energy-demo/config/control-room.ts) - **브랜드 & 기술 관제** (NEW!)
+사이트의 정체성과 기술적 설정을 모두 관리합니다.
+- **아이덴티티(Identity):** 사이트 이름(`name`), 로고 텍스트(`logoText`), 전체 설명 등을 여기서 한 번만 바꾸면 헤더, 푸터, 모든 페이지 본문에 즉시 반영됩니다. (예: 조은에너지 → 나쁜에너지 로 변경 시 전역 반영)
 - **지도(Maps):** 카카오/구글 지도 API 키 및 좌표 설정
 - **분석(Analytics):** GA ID 및 Vercel 분석 도구 활성화
 - **연동(Integrations):** 이메일 문의 수신처 경로 설정

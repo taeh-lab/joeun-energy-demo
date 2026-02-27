@@ -6,10 +6,10 @@ export const siteConfig = {
   url: "https://joeunenergy.com",
   ogImage: "https://joeunenergy.com/og.jpg",
   contact: {
-    tel: "1544-8972",
-    email: "info@joeunenergy.com",
-    address: "경기도 파주시 법원읍",
-    hours: "월-금 09:00 ~ 18:00",
+    tel: "031-XXX-XXXX", // 실제 번호로 교체 필요
+    email: "contact@yangsu-energy.com",
+    address: "경기도 양평군 양서면 목왕로 637",
+    hours: "연중무휴 (확인 필요)",
   },
   mainNav: [
     {

@@ -8,9 +8,9 @@
 export const controlRoom = {
   // 0. 아이덴티티 (Identity)
   identity: {
-    name: "조은에너지",
-    logoText: "조은에너지",
-    description: "신뢰할 수 있는 신재생에너지 파트너",
+    name: "양수삼풍에너지",
+    logoText: "양수삼풍에너지",
+    description: "경기도 양평군의 믿음직한 가정용 연료 소매 파트너",
   },
 
   // 1. 지도 서비스 (Kakao Maps 등)
@@ -18,9 +18,9 @@ export const controlRoom = {
     provider: "kakao", // "kakao" | "google"
     apiKey: "YOUR_KAKAO_MAP_API_KEY", // 실제 API 키로 교체 필요
     location: {
-      lat: 37.8105, // 위도 (경기도 파주시)
-      lng: 126.9248, // 경도
-      title: "조은에너지 본사",
+      lat: 37.5608, // 위도 (양서면 목왕로)
+      lng: 127.3816, // 경도
+      title: "양수삼풍에너지",
     },
     zoomLevel: 3,
   },
