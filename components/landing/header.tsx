@@ -35,7 +35,7 @@ export function Header() {
           <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary text-primary-foreground transition-transform group-hover:rotate-12 shadow-lg">
             <Zap className="h-6 w-6" />
           </div>
-          <span className={`text-xl font-bold tracking-tighter transition-colors ${
+          <span className={`text-xl font-bold tracking-tighter transition-colors drop-shadow-sm ${
             isScrolled ? "text-foreground" : "text-white md:text-white"
           }`}>
             {controlRoom.identity.logoText}
@@ -48,7 +48,7 @@ export function Header() {
             <Link
               key={item.href}
               href={item.href}
-              className={`text-sm font-bold transition-all hover:text-primary ${
+              className={`text-sm font-bold transition-all hover:text-primary drop-shadow-sm ${
                 isScrolled ? "text-foreground" : "text-white/90 hover:text-white"
               }`}
             >
@@ -71,14 +71,14 @@ export function Header() {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMobileOpen(!isMobileOpen)}
-            className={`flex items-center gap-2 rounded-full px-4 py-2 transition-all md:hidden ${
+            className={`flex items-center gap-2 rounded-full px-5 py-2.5 transition-all md:hidden shadow-lg ${
               isScrolled 
-                ? "bg-primary/10 text-primary border border-primary/20" 
-                : "bg-white/10 text-white backdrop-blur-md border border-white/20"
+                ? "bg-primary/20 text-primary border border-primary/20" 
+                : "bg-white/20 text-white backdrop-blur-md border border-white/30"
             }`}
           >
-            <span className="text-sm font-bold">{isMobileOpen ? "닫기" : "메뉴"}</span>
-            {isMobileOpen ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
+            <span className="text-base font-black">{isMobileOpen ? "닫기" : "메뉴"}</span>
+            {isMobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </button>
         </div>
       </nav>
@@ -96,10 +96,10 @@ export function Header() {
                 key={item.href}
                 href={item.href}
                 onClick={() => setIsMobileOpen(false)}
-                className="flex items-center justify-between rounded-2xl bg-white/50 p-5 text-lg font-black text-foreground transition-all hover:bg-primary/10 active:scale-[0.98]"
+                className="flex items-center justify-between rounded-[2rem] bg-white/60 p-7 text-2xl font-black text-foreground transition-all hover:bg-primary/10 active:scale-[0.98] border border-white/50"
               >
                 {item.title}
-                <ChevronDown className="-rotate-90 h-5 w-5 opacity-20" />
+                <ChevronDown className="-rotate-90 h-6 w-6 opacity-30" />
               </Link>
             ))}
             <Link
