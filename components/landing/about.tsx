@@ -1,5 +1,6 @@
 import { Building2, Award, Users, Leaf } from "lucide-react"
 import { ScrollReveal } from "@/components/ui/scroll-reveal"
+import { controlRoom } from "@/config/control-room"
 
 const highlights = [
   {
@@ -49,7 +50,7 @@ export function About() {
           <div className="overflow-hidden rounded-xl">
             <img
               src="/images/about-company.jpg"
-              alt="조은에너지 본사 전경"
+              alt={`${controlRoom.identity.name} 본사 전경`}
               className="h-80 w-full object-cover lg:h-[420px]"
             />
           </div>
@@ -62,7 +63,7 @@ export function About() {
               최적의 에너지 솔루션
             </h3>
             <p className="mb-6 leading-relaxed text-muted-foreground">
-              조은에너지는 신재생에너지 분야의 전문 기업으로, 태양광 발전 시스템의 설계, 시공,
+              {controlRoom.identity.name}는 신재생에너지 분야의 전문 기업으로, 태양광 발전 시스템의 설계, 시공,
               유지보수는 물론 ESS(에너지저장장치) 솔루션과 에너지 컨설팅까지 원스톱 서비스를
               제공합니다. 풍부한 경험과 검증된 기술력을 바탕으로 고객에게 최적화된 에너지 솔루션을
               제안합니다.

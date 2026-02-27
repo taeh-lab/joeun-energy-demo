@@ -5,6 +5,7 @@ import { Menu, X, Phone } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
 import { siteConfig } from "@/config/site"
+import { controlRoom } from "@/config/control-room"
 import Link from "next/link"
 
 export function Header() {
@@ -44,7 +45,7 @@ export function Header() {
             className={`text-lg font-bold transition-colors ${isScrolled ? "text-foreground" : "text-card"
               }`}
           >
-            조은에너지
+            {controlRoom.identity.logoText}
           </span>
         </a>
 

@@ -1,4 +1,5 @@
 import { siteConfig } from "@/config/site"
+import { controlRoom } from "@/config/control-room"
 import Link from "next/link"
 
 export function Footer() {
@@ -18,10 +19,10 @@ export function Footer() {
                   <line x1="20" y1="12" x2="23" y2="12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
                 </svg>
               </div>
-              <span className="text-lg font-bold text-background">{siteConfig.name}</span>
+              <span className="text-lg font-bold text-background">{controlRoom.identity.name}</span>
             </div>
             <p className="text-sm leading-relaxed text-background/60">
-              {siteConfig.description}
+              {controlRoom.identity.description}
               <br />
               신뢰할 수 있는 신재생에너지 파트너.
             </p>

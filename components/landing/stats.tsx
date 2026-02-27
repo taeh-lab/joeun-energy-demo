@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react"
 import { ScrollReveal } from "@/components/ui/scroll-reveal"
+import { controlRoom } from "@/config/control-room"
 
 const stats = [
   { value: 500, suffix: "+", label: "시공 완료 건수" },
@@ -74,7 +75,7 @@ export function Stats() {
             Our Achievements
           </p>
           <h2 className="text-3xl font-bold text-primary-foreground md:text-4xl text-balance">
-            숫자로 보는 조은에너지
+            숫자로 보는 {controlRoom.identity.name}
           </h2>
         </div>
 

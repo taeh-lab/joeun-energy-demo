@@ -1,6 +1,8 @@
+import { controlRoom } from "./control-room"
+
 export const siteConfig = {
-  name: "조은에너지",
-  description: "신뢰할 수 있는 신재생에너지 파트너",
+  name: controlRoom.identity.name,
+  description: controlRoom.identity.description,
   url: "https://joeunenergy.com",
   ogImage: "https://joeunenergy.com/og.jpg",
   contact: {

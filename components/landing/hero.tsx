@@ -28,7 +28,7 @@ export function Hero() {
         <p className="mx-auto mb-10 max-w-2xl text-lg leading-relaxed text-primary-foreground/85 text-pretty">
           태양광 시공부터 ESS 솔루션, 에너지 컨설팅까지.
           <br className="hidden md:block" />
-          조은에너지가 함께하는 지속 가능한 에너지 전환.
+          {controlRoom.identity.name}가 함께하는 지속 가능한 에너지 전환.
         </p>
         <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
           <a href="#contact">
