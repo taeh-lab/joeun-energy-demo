@@ -90,46 +90,66 @@ export function Header() {
           </a>
           <button
             onClick={() => setIsMobileOpen(!isMobileOpen)}
-            className={`md:hidden ${isScrolled ? "text-foreground" : "text-card"}`}
+            className={`flex items-center gap-2 rounded-full px-4 py-2 transition-all md:hidden ${isScrolled 
+              ? "bg-primary text-primary-foreground shadow-md" 
+              : "bg-card text-foreground border border-border"}`}
             aria-label={isMobileOpen ? "메뉴 닫기" : "메뉴 열기"}
           >
-            {isMobileOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+            <span className="text-sm font-bold">{isMobileOpen ? "닫기" : "전체메뉴"}</span>
+            {isMobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </button>
         </div>
       </div>
 
       {/* Mobile Menu */}
       {isMobileOpen && (
-        <div className="border-t border-border bg-card md:hidden max-h-[70vh] overflow-y-auto">
-          <nav className="flex flex-col px-6 py-4" aria-label="Mobile navigation">
-            {siteConfig.mainNav.map((link) => (
-              <div key={link.href} className="flex flex-col">
-                <Link
-                  href={link.href}
-                  onClick={() => setIsMobileOpen(false)}
-                  className="py-3 text-sm font-semibold text-foreground transition-colors hover:text-primary border-b border-border/50"
-                >
-                  {link.title}
-                </Link>
-                {link.items && (
-                  <div className="flex flex-col pl-4">
-                    {link.items.map((sub) => (
-                      <Link
-                        key={sub.href}
-                        href={sub.href}
-                        onClick={() => setIsMobileOpen(false)}
-                        className="py-2 text-xs text-muted-foreground hover:text-primary"
-                      >
-                        {sub.title}
-                      </Link>
-                    ))}
-                  </div>
-                )}
-              </div>
-            ))}
-            <a href={`tel:${siteConfig.contact.tel.replace(/-/g, '')}`} className="mt-4">
-              <Button className="w-full bg-primary text-primary-foreground hover:bg-primary/90">
-                <Phone className="mr-1.5 h-4 w-4" />
+        <div className="fixed inset-0 top-[72px] z-40 bg-card md:hidden overflow-y-auto animate-in slide-in-from-top duration-300">
+          <nav className="flex flex-col px-6 py-8 h-full" aria-label="Mobile navigation">
+            <div className="mb-6 grid grid-cols-2 gap-4">
+               {siteConfig.mainNav.slice(0, 4).map((link) => (
+                 <Link
+                   key={link.href}
+                   href={link.href}
+                   onClick={() => setIsMobileOpen(false)}
+                   className="flex items-center justify-center rounded-xl bg-muted p-6 text-center text-sm font-bold transition-all hover:bg-primary hover:text-primary-foreground"
+                 >
+                   {link.title}
+                 </Link>
+               ))}
+            </div>
+            
+            <div className="space-y-2 border-t border-border pt-6">
+              {siteConfig.mainNav.map((link) => (
+                <div key={link.href} className="flex flex-col">
+                  <Link
+                    href={link.href}
+                    onClick={() => setIsMobileOpen(false)}
+                    className="flex items-center justify-between py-4 text-lg font-bold text-foreground border-b border-border/50"
+                  >
+                    {link.title}
+                    <span className="text-primary text-xs font-normal">이동 →</span>
+                  </Link>
+                  {link.items && (
+                    <div className="grid grid-cols-2 gap-2 py-3 pl-2">
+                      {link.items.map((sub) => (
+                        <Link
+                          key={sub.href}
+                          href={sub.href}
+                          onClick={() => setIsMobileOpen(false)}
+                          className="rounded-lg bg-muted/50 px-3 py-2.5 text-xs text-muted-foreground hover:bg-primary/10 hover:text-primary"
+                        >
+                          {sub.title}
+                        </Link>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+
+            <a href={`tel:${siteConfig.contact.tel.replace(/-/g, '')}`} className="mt-auto pt-8 pb-12">
+              <Button className="w-full h-16 bg-primary text-xl font-bold text-primary-foreground hover:bg-primary/90 rounded-2xl shadow-lg">
+                <Phone className="mr-2 h-6 w-6" />
                 전화 상담: {siteConfig.contact.tel}
               </Button>
             </a>
