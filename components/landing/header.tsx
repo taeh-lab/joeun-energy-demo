@@ -4,13 +4,8 @@ import { useState, useEffect } from "react"
 import { Menu, X, Phone } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
-const navLinks = [
-  { label: "회사소개", href: "#about" },
-  { label: "사업영역", href: "#services" },
-  { label: "실적", href: "#stats" },
-  { label: "프로젝트", href: "#projects" },
-  { label: "문의", href: "#contact" },
-]
+import { siteConfig } from "@/config/site"
+import Link from "next/link"
 
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false)
@@ -55,15 +50,29 @@ export function Header() {
 
         {/* Desktop Nav */}
         <nav className="hidden items-center gap-8 md:flex" aria-label="Main navigation">
-          {navLinks.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              className={`text-sm font-medium transition-colors hover:text-primary ${isScrolled ? "text-foreground" : "text-card/90 hover:text-card"
-                }`}
-            >
-              {link.label}
-            </a>
+          {siteConfig.mainNav.map((link) => (
+            <div key={link.href} className="group relative">
+              <Link
+                href={link.href}
+                className={`text-sm font-medium transition-colors hover:text-primary ${isScrolled ? "text-foreground" : "text-card/90 hover:text-card"
+                  }`}
+              >
+                {link.title}
+              </Link>
+              {link.items && (
+                <div className="absolute left-0 top-full hidden w-48 flex-col bg-card shadow-lg group-hover:flex">
+                  {link.items.map((sub) => (
+                    <Link
+                      key={sub.href}
+                      href={sub.href}
+                      className="px-4 py-2 text-xs hover:bg-muted"
+                    >
+                      {sub.title}
+                    </Link>
+                  ))}
+                </div>
+              )}
+            </div>
           ))}
         </nav>
 
@@ -91,22 +100,37 @@ export function Header() {
 
       {/* Mobile Menu */}
       {isMobileOpen && (
-        <div className="border-t border-border bg-card md:hidden">
+        <div className="border-t border-border bg-card md:hidden max-h-[70vh] overflow-y-auto">
           <nav className="flex flex-col px-6 py-4" aria-label="Mobile navigation">
-            {navLinks.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                onClick={() => setIsMobileOpen(false)}
-                className="py-3 text-sm font-medium text-foreground transition-colors hover:text-primary"
-              >
-                {link.label}
-              </a>
+            {siteConfig.mainNav.map((link) => (
+              <div key={link.href} className="flex flex-col">
+                <Link
+                  href={link.href}
+                  onClick={() => setIsMobileOpen(false)}
+                  className="py-3 text-sm font-semibold text-foreground transition-colors hover:text-primary border-b border-border/50"
+                >
+                  {link.title}
+                </Link>
+                {link.items && (
+                  <div className="flex flex-col pl-4">
+                    {link.items.map((sub) => (
+                      <Link
+                        key={sub.href}
+                        href={sub.href}
+                        onClick={() => setIsMobileOpen(false)}
+                        className="py-2 text-xs text-muted-foreground hover:text-primary"
+                      >
+                        {sub.title}
+                      </Link>
+                    ))}
+                  </div>
+                )}
+              </div>
             ))}
-            <a href="tel:1544-8972" className="mt-2">
+            <a href={`tel:${siteConfig.contact.tel.replace(/-/g, '')}`} className="mt-4">
               <Button className="w-full bg-primary text-primary-foreground hover:bg-primary/90">
                 <Phone className="mr-1.5 h-4 w-4" />
-                전화 상담: 1544-8972
+                전화 상담: {siteConfig.contact.tel}
               </Button>
             </a>
           </nav>

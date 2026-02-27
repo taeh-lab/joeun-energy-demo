@@ -1,3 +1,6 @@
+import { siteConfig } from "@/config/site"
+import Link from "next/link"
+
 export function Footer() {
   return (
     <footer className="bg-foreground py-12">
@@ -15,10 +18,10 @@ export function Footer() {
                   <line x1="20" y1="12" x2="23" y2="12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
                 </svg>
               </div>
-              <span className="text-lg font-bold text-background">조은에너지</span>
+              <span className="text-lg font-bold text-background">{siteConfig.name}</span>
             </div>
             <p className="text-sm leading-relaxed text-background/60">
-              깨끗한 에너지로 밝은 미래를 만듭니다.
+              {siteConfig.description}
               <br />
               신뢰할 수 있는 신재생에너지 파트너.
             </p>
@@ -30,19 +33,14 @@ export function Footer() {
               바로가기
             </h4>
             <nav className="flex flex-col gap-2" aria-label="Footer navigation">
-              {[
-                { label: "회사소개", href: "#about" },
-                { label: "사업영역", href: "#services" },
-                { label: "시공 실적", href: "#projects" },
-                { label: "무료 상담", href: "#contact" },
-              ].map((link) => (
-                <a
+              {siteConfig.mainNav.slice(0, 4).map((link) => (
+                <Link
                   key={link.href}
                   href={link.href}
                   className="text-sm text-background/60 transition-colors hover:text-primary"
                 >
-                  {link.label}
-                </a>
+                  {link.title}
+                </Link>
               ))}
             </nav>
           </div>
@@ -55,21 +53,21 @@ export function Footer() {
             <div className="space-y-2 text-sm text-background/60">
               <p>
                 <span className="text-background/80">전화:</span>{" "}
-                <a href="tel:1544-8972" className="transition-colors hover:text-primary">
-                  1544-8972
+                <a href={`tel:${siteConfig.contact.tel.replace(/-/g, '')}`} className="transition-colors hover:text-primary">
+                  {siteConfig.contact.tel}
                 </a>
               </p>
               <p>
                 <span className="text-background/80">이메일:</span>{" "}
-                <a href="mailto:info@joeunenergy.com" className="transition-colors hover:text-primary">
-                  info@joeunenergy.com
+                <a href={`mailto:${siteConfig.contact.email}`} className="transition-colors hover:text-primary">
+                  {siteConfig.contact.email}
                 </a>
               </p>
               <p>
-                <span className="text-background/80">주소:</span> 경기도 파주시 법원읍
+                <span className="text-background/80">주소:</span> {siteConfig.contact.address}
               </p>
               <p>
-                <span className="text-background/80">운영시간:</span> 월-금 09:00 ~ 18:00
+                <span className="text-background/80">운영시간:</span> {siteConfig.contact.hours}
               </p>
             </div>
           </div>

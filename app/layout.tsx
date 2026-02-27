@@ -6,16 +6,18 @@ import './globals.css'
 
 const notoSansKR = Noto_Sans_KR({ subsets: ["latin"], weight: ["300", "400", "500", "600", "700"] });
 
+import { siteConfig } from "@/config/site"
+
 export const metadata: Metadata = {
-  title: '조은에너지 - 신뢰할 수 있는 신재생에너지 파트너',
-  description: '태양광 시공, ESS 솔루션, 에너지 컨설팅까지. 조은에너지와 함께 지속 가능한 미래를 만들어 갑니다.',
+  title: `${siteConfig.name} - ${siteConfig.description}`,
+  description: siteConfig.description,
   keywords: ["태양광 설치", "에너지 솔루션", "ESS", "신재생에너지", "조은에너지", "파주 태양광"],
   generator: 'v0.app',
   openGraph: {
-    title: "조은에너지 | 최적의 태양광 & 에너지 솔루션 파트너",
-    description: "신재생에너지 전문 기업 조은에너지입니다.",
-    url: "https://joeunenergy.com",
-    siteName: "조은에너지",
+    title: `${siteConfig.name} | 최적의 태양광 & 에너지 솔루션 파트너`,
+    description: siteConfig.description,
+    url: siteConfig.url,
+    siteName: siteConfig.name,
     locale: "ko_KR",
     type: "website",
   },
